@@ -1,31 +1,62 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 button {
-    height: 40px;
-    width: 40px;
+    display: flex;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-height: 25%;
+    max-width: 15%;
+}
+
+.numbers {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    max-height: 25%;
+    justify-content: center;
 }
 
 .operators > button {
     background-color: orange;
+    flex-basis: 20%;
+    justify-content: center;
+    align-items: center;
 }
 
 .numbers > button {
     background-color: burlywood;
+    flex-basis: 33.3%;
+    justify-content: center;
+    align-items: center;
 }
 
 .calculator {
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-content: center;
-    width: 218px;
+    width: 400px;
+    height: 100vh;
 }
 
 .display {
     display: flex;
-    height: 20px;
+    height: 60px;
+    flex: 1 0 inherit;
     background-color: blanchedalmond;
     border-style: solid;
+    font-size: 40px;
 }
 
 .keypad {
     display: flex;
-    flex-direction: column;
+    flex-grow: 1;
 }
