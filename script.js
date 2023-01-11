@@ -1,3 +1,5 @@
+let displayValue = '';
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -27,4 +29,16 @@ function operate(operator, num1, num2) {
         default:
             alert("An error has occurred");
     }
+}
+
+let numPad = document.querySelector('.numbers');
+let numButtons = Array.from(numPad.children);
+
+numButtons.forEach((button) => (button.addEventListener('click', diplayAdd)));
+
+//adds numbers clicked to the display
+function diplayAdd(e) {
+    displayValue = e.currentTarget.innerText;
+    let display = document.querySelector('.display');
+    display.innerText = display.innerText + displayValue;
 }
