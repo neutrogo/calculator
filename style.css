@@ -1,0 +1,30 @@
+button {
+    height: 40px;
+    width: 40px;
+}
+
+.operators > button {
+    background-color: orange;
+}
+
+.numbers > button {
+    background-color: burlywood;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 218px;
+}
+
+.display {
+    display: flex;
+    height: 20px;
+    background-color: blanchedalmond;
+}
+
+.keypad {
+    display: flex;
+    flex-direction: column;
+}
