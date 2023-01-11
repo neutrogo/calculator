@@ -21,7 +21,7 @@ button {
     flex: 1;
     flex-wrap: wrap;
     max-height: 25%;
-    justify-content: center;
+
 }
 
 .operators > button {
@@ -29,6 +29,8 @@ button {
     flex-basis: 20%;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .numbers > button {
@@ -36,6 +38,12 @@ button {
     flex-basis: 33.3%;
     justify-content: center;
     align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+button.grey {
+    background-color: lightgrey;
 }
 
 .calculator {

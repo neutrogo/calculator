@@ -37,41 +37,61 @@ let numPad = document.querySelector('.numbers');
 let numButtons = Array.from(numPad.children);
 let opPad = document.querySelector('.operators');
 let opButtons = Array.from(opPad.children);
+let clearButton = document.querySelector('#clear');
 
 numButtons.forEach((button) => (button.addEventListener('click', diplayAdd)));
 opButtons.forEach((button) => (button.addEventListener('click', setOperator)));
+clearButton.addEventListener('click', clearAll);
 
 
 //adds numbers clicked to the display
 function diplayAdd(e) {
     let tmp = e.currentTarget.innerText;
     displayValue = displayValue + tmp;
+    checkDisplayValue();
     let display = document.querySelector('.display');
     display.innerText = displayValue;
 }
 
-// this currently only accepts two values, could be extended
+// sets the operator and works out the sum if two numbers are present/given
 function setOperator(e) {
     let operator = e.currentTarget.innerText;
     let display = document.querySelector('.display');
-    
-    // check for empty values (ie no numbers pressed before operator)
-    if(operator !== '=') {
-        display.innerText = operator;
+
+    //could add support for repeatedly pressing "="
+
+    if(displayValue === '0' && currentUseOperator === '/'){
+        alert("Are you crazy? YOU CAN'T JUST DIVIDE BY 0!!!");
+        return;
+    }
+    if(num1 !== '' && displayValue !== '') {
+        let result = operate(currentUseOperator, +num1, +displayValue);
+        result = Math.round(result * 100000) / 100000
+        displayValue = result;
+        display.innerText = displayValue;
+        num1 = '';
+    }
+    if(displayValue !== '' && operator !== '=' && num1 === '') {
         currentUseOperator = operator;
         num1 = displayValue;
         displayValue = '';
     }
-    // change so the user can also input "3 =", returning "3"
-    if(operator === '=') {
-        if(num1 !== '') {
-            let result = operate(currentUseOperator, +num1, +displayValue);
-            displayValue = result;
-            display.innerText = displayValue;
-        }
-        else {
-            display.innerText = '';
-        }
+}
+
+// clears everything (slight issue in that C and blank are technically still
+// entered into displayValue, though this doesn't affect the user)
+function clearAll() {
+    displayValue = '';
+    currentUseOperator = '';
+    num1 = '';
+    let display = document.querySelector('.display');
+    display.innerText = '';
+}
+
+function checkDisplayValue() {
+    if(displayValue.length > 18) {
+        displayValue = displayValue.slice(0,-1);
     }
 }
 
+// need to ensure text doesn't overflow when working out big numbers
