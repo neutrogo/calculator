@@ -95,3 +95,5 @@ function checkDisplayValue() {
 }
 
 // need to ensure text doesn't overflow when working out big numbers
+
+// add a shadow when hovering over the keys to make it look nicer
